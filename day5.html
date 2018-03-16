@@ -1,299 +1,431 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>reveal.js</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/momentum.css">
+  <title>reveal.js</title>
 
-    <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/momentum.css">
 
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
-    </script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <h1>Code Basics</h1>
-          <h2 class="brand-teal">JavaScript and the DOM</h2>
-        </section>
-        <section>
-          <h2>Today we'll learn about...</h2>
-            <ul>
-              <li>The Document Object Model (DOM)</li>
-              <li>The Window object</li>
-              <li>Using JavaScript to select and change DOM elements</li>
-              <li>Handling browser events with JavaScript</li>
-            </ul>
-        </section>
-        <section data-background-image="images/fe-components.jpg">
-          <aside class="notes">
-            <p>Provide a context for the DOM by reminding students about the role of JS in conjunction with HTML &amp; CSS.</p>
-          </aside>
-        </section>
-        <section>
-          <h2>What is the DOM?</h2>
-          <blockquote>
-            The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
-          </blockquote>
-          <aside class="notes">
-          <p><a href="https://css-tricks.com/dom/">This CSS-tricks article</a> is a helpful resource for explaining this tricky concept to students.</p>
-          <p>tl;dr: The browser receives your HTML + CSS + JS and creates a model of the page -- this is the DOM. The takeaway for students should be to understand the difference between what they write in their HTML files and what the browser will use to render what we see in the browser window.</p>
-          <p>JS is the language the browser uses to interact with this model -- the programming interface -- to make changes to the page.</p>
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/atom-one-dark.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Foundations</h1>
+        <h2 class="brand-teal">JavaScript and the DOM</h2>
+      </section>
+      <section>
+        <h2>Today we'll learn about...</h2>
+        <ul>
+          <li>The Document Object Model (DOM)</li>
+          <li>The Window object</li>
+          <li>Using JavaScript to select and change DOM elements</li>
+          <li>Handling browser events with JavaScript</li>
+        </ul>
+      </section>
+      <section data-background-image="images/fe-components.jpg">
+        <aside class="notes">
+          <p>Provide a context for the DOM by reminding students about the role of JS in conjunction with HTML &amp; CSS.</p>
         </aside>
-        </section>
-        <section>
-          <h2>The DOM Tree and DOM Nodes</h2>
-          <img src="images/dom-tree.png">
-          <aside class="notes">
-            <p>What we know as HTML elements become "nodes" in the DOM. These are the things we can access and modify with JS.</p>
-          </aside>
-        </section>
-        <section>
-         <h2>The Window Object</h2>
-         <p>The document object is loaded into the browser window, and at that point the nodes are accessible to you through JavaScript.</p>
-          <pre><code data-trim>
-            window.document
-          </code></pre>
-          <aside class="notes">
-            <p>The DOM is a model of the Document Object. A document is loaded to the window, and is accessible as a property on <span>window</span>, or by the shorthand <span class="monospace">document.</span></p>
-            <p>Demo <span>window.document</span> in the Chrome console. Students can do the same.</p>
-            <p>You could also show <span class="monospace">window.location</span>, <span class="monospace">window.alert</span>, and <span class="monospace">window.open</span>.</p>
-          </aside>
-        </section>
-        <section>
-          <h2>Selecting DOM Nodes</h2>
-          <p>You can find and "grab" elements on the page (DOM nodes) with JavaScript.</p>
-          <pre><code data-trim>
-            &lt;img id=&quot;kittenPic&quot; class=&quot;illustration&quot; src=&quot;https://source.unsplash.com/200x300/?kitten&quot; alt=&quot;kitten&quot;/&gt;
-          </code></pre>
-          <aside class="notes">
-            <p>Take time to explain the concept of "selecting." Why would we want to do this? What things would we want to think about when trying to find elements? What are the ways we could find/differentiate elements on the page?</p>
-            <p>A good instructor resource for this content, especially if you are more familiar with jQuery, is <a href="https://plainjs.com">plainjs.com</a>.</p>
-          </aside>
-        </section>
-        <section>
-          <h2>Selecting DOM Nodes</h2>
-          <pre><code data-trim>var image = document.getElementById('kittenPic');</pre></code>
-          <div class="fragment">
-            <pre><code data-trim>document.getElementsByClassName('illustration');</pre></code>
-          </div>
-          <div class="fragment">
-            <pre><code data-trim>document.getElementsByTagName('img');</pre></code>
-          </div>
-          <aside class="notes">
-            <p>Walk through the syntax of the different ways to select DOM elements, tying back to some of the things students may have said. (This slide has fragmented content that is revealed as you tab through it.)</p>
-            <p>Make note of the difference between "getElement" and "getElements" -- this is a common gotcha for new students. To select a single node when an array (technically an <span class="monospace"> HTMLCollection</span>) is returned, remind students about bracket notation.</p>
-          </aside>
-        </section>
-        <section>
-          <h2>CODE BREAK</h2>
-          <p>Add an image element to your page if you don't already have one. Load the page in the browser and open the Console.</p>
-          <p>In the console, <span class="brand-salmon bold">find the DOM node containing that element</span>. Store it in a variable.</p>
-          <p><span class="brand-salmon bold">Practice selecting other elements</span> and inspecting them in the console. What does it look like when you have more than one element?</p>
-        </section>
-        <section>
-          <h2>getElement vs. getElements</h2>
-          <pre><code data-trim>
-            document.getElementById('uniqueID');
-              // returns only one node
-          </code></pre>
-          <pre><code data-trim>
-            document.getElementsByClassName('product-description');
-              // returns an array-like collection of nodes
-            document.getElementsByClassName('product-description')[0];
-              // ah ha! now you have only one node!
-          </code></pre>
-          <aside class="notes">
-            <p>Talk through these examples. Ask students to explain what the bracket notation example will return. This is also a good time to remind students about the usage difference between IDs and class.</p>
-          </aside>
-        </section>
-        <section>
-          <h3>Changing Things in the DOM</h3>
-          <p>Now that we know how to find DOM elements, we can make changes to them.</p>
-            <pre><code data-trim>
-              var mainImg = document.getElementById('main-image');
-              mainImg.getAttribute('src');
-                // what will this return?
-              mainImg.setAttribute('src', 'https://source.unsplash.com/200x300/?ocean');
-                // what will this do?
-              mainImg.setAttribute('style', 'border: 4px solid purple');
-                // what will this do?
-            </code></pre>
-        </section>
-        <section>
-          <h2>Changing Things in the DOM</h2>
-          <h4>Alternate Syntax</h4>
-          <p>We can do the same things using dot notation to get or set element attributes:</p>
-            <pre><code data-trim>
-              var mainImg = document.getElementById('main-image');
-              mainImg.src
-                // This returns the same as calling 'mainImg.getAttribute('src');'
-              mainImg.src = 'https://source.unsplash.com/200x300/?ocean';
-                // sets the src attribute to this value
-              mainImg.style.border = '4px solid purple';
-                // sets the style attribute and border property to this value
-            </code></pre>
-            <aside class="notes">
-              <p>Demo this in the console. Note that there is very often more than one way to do things in JS (or any language).</p>
-              <p>When you demo this in the console you could choose to add in the <span class="monospace">querySelector</span> and <span class="monospace">querySelectorAll</span> methods to select elements using CSS selectors.</p>
-            </aside>
-        </section>
-        <section>
-          <h2>CODE BREAK</h2>
-            <p>Let's try this out!</p>
-            <p>Make sure you have an image element on your page, like the following example.</p>
-            <pre><code data-trim>
-              &lt;img id=&quot;oceanPic&quot; class=&quot;illustration&quot; src=&quot;https://source.unsplash.com/200x300/?ocean&quot; alt=&quot;the sea&quot;/&gt;
-           </code></pre>
-            <p>Open the console, and first select that DOM node. </p>
-            <p>Change the <span class="code-snippet">src</span> attribute so that a different image will be displayed.</p>
-            <p>Add or change the style attribute, using whatever properties you'd like.</p>
-            <p>Experiment with selecting and changing other DOM nodes in your page!</p>
-        </section>
-        <section>
-          <h2>Changing content in the DOM</h2>
-          <p>The <span class="code-snippet">innerHTML</span> property gives us access to the content of elements in the DOM and their children, if any.</p>
-          <pre><code data-trim>
-            element = document.getElementById('product-title');
-            element.innerHTML('&lt;h2&gt;Boomerang&lt;h2&gt;')
-          </code></pre>
-          <aside class="notes">
-            <p>Some confusing concepts for newbies here are using both methods and properties, and some of those can do both getting/setting. Demo these things in the console, take it slowly, and don't worry too much about that distinction during this class. It's more important that they get some practice using them and seeing the results.</p>
-          </aside>
-        </section>
-        <section>
-          <h2>Adding things to the DOM</h2>
-          <pre><code data-trim>
-            var existingElement = document.getElementById('div-awaiting-content')
-              // First select where you want to place the new content
-            var newElement = document.createElement('div');
-             // Create the new element
-            existingElement.appendChild(newElement);
-              // Add that element to the DOM
-          </code></pre>
-        </section>
-        <section>
-          <h2>Removing things from the DOM</h2>
-          <p>This is a little more complicated: first select the element to remove, then select its parent element.</p>
-          <p>Then you can remove the parent's child element.</p>
-          <pre><code data-trim>
-            var elementToRemove = document.getElementsByTagName('li')[2];
-            // What will this do?
-            parentElement = elementToRemove.parentNode
-            // what will this do?
-            parentElement.removeChild(elementToRemove);
-            // what is happening here?
-          </code></pre>
-          <aside class="notes">You could mention jQuery and/or React here as other ways to manipulate the DOM. </aside>
-        </section>
-        <section>
-          <h2>CODE BREAK</h2>
-          <p>Using Javascript only, create a new <span class="monospace">p</span> element and add it to a <span class="monospace">div</span> on your page. Set the content of the paragraph to a friendly message, then change the message to something different.</p>
-          <h4>Extra Challenge!</h4>
-          <p>Go to <a href="www.reuters.com">reuters.com</a> or another news site. Using JavaScript only, find and change a headline to something you like better!</p>
-        </section>
-        <section>
-          <h2>Javascript Events</h2>
-          <p>User interactions create events on the page. JavaScript can handle these events: detect when something happens and do something in response, including changing the DOM or triggering other events. </p>
-          <aside class="notes">
-            <p>Ask students to brainstorm what some events might be and some interactions they are familiar with on webpages.</p>
-            <p>Explain that the event interface is like other JS objects, with properties and methods that we can interact with.</p>
-          </aside>
-        </section>
-        <section>
-          <h2>Some Types of Events</h2>
-          <ul class="no-bullet">
-            <li><i class="fas fa-spinner fa-fw"></i> when the page loads</li>
-            <li><i class="fas fa-mouse-pointer fa-fw"></i> a mouse click or movement</li>
-            <li><i class="fas fa-hand-point-up fa-fw"></i> a tap on a touchscreen</li>
-            <li><i class="fas fa-keyboard fa-fw"></i> when a key is pressed</li>
-            <li><i class="fas fa-check-square fa-fw"></i> when something is selected</li>
-          </ul>
-        </section>
-        <aside class="notes">An event fires and triggers some JavaScript code to run. The code has been written to "listen" for when a certain event occurs; when that event occurs, the code will run.</aside>
-        <section>
-          <h2>Event Handling</h2>
-            <p>Let's say you want a certain function to run when an image on the page is clicked.</p>
-            <ul>
-              <li>Select the DOM node for the element that will be clicked (the image).</li>
-              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events">Choose the event</a> that will act as the trigger for the function (the mouse click).</li>
-              <li>Specify the function that you wish to run when the event occurs.</li>
-            </ul>
-        </section>
-        <section>
-          <h2>Call the function inside the HTML</h2>
-          <pre><code data-trim>
-            &lt;button id="cancelButton" onclick="confirmCancel()"&gt;
-              Cancel order
-            &lt;/button&gt;
+      </section>
+      <section>
+        <h2>What is the DOM?</h2>
+        <blockquote id="dom-definition">
+          The Document Object Model (DOM) is a programming interface for HTML documents. It represents the page so that programs can
+          change the document structure, style and content. The DOM represents the document as nodes and objects. That way,
+          programming languages can connect to the page.
+        </blockquote>
+        <label for="dom-definition">Adapted from
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">MDN, "Introduction to the DOM"</a>
+        </label>
+        <aside class="notes">
+          <p>
+            <a href="https://css-tricks.com/dom/">This CSS-tricks article</a> is a helpful resource for explaining this tricky concept to students.</p>
+          <p>tl;dr: The browser receives your HTML + CSS + JS and creates a model of the page -- this is the DOM. The takeaway
+            for students should be to understand the difference between what they write in their HTML files and what the
+            browser will use to render what we see in the browser window.</p>
+          <p>JS is the language the browser uses to interact with this model -- the programming interface -- to make changes
+            to the page.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>The DOM Tree and DOM Nodes</h2>
+        <img src="images/dom-tree.png">
+        <aside class="notes">
+          <p>What we know as HTML elements become "nodes" in the DOM. These are the things we can access and modify with JS.</p>
+          <p>The concept of text nodes is super weird for students just getting used to html, so you may want to talk about that a little bit.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>The Window Object</h2>
+        <p>The document object is loaded into the browser window, and at that point the nodes are accessible to you through
+          JavaScript.</p>
+        <pre><code data-trim>
+          window.document
+        </code></pre>
+        <aside class="notes">
+          <p>The DOM is a model of the Document Object. A document is loaded to the window, and is accessible as a property
+            on `window`, or just by the shorthand `document`.</p>
+          <p>Demo window.document in the Chrome console. Encourage students to try it for themselves as well.</p>
+          <p>You could also show `window.location`, `window.alert`, and `window.open`.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Selecting DOM Nodes</h2>
+        <p>You can find and "grab" elements on the page (DOM nodes) with JavaScript.</p>
+        <pre><code data-trim>
+          &lt;img id=&quot;kittenPic&quot; class=&quot;illustration&quot; src=&quot;https://source.unsplash.com/200x300/?kitten&quot; alt=&quot;kitten&quot;/&gt;
+        </code></pre>
+        <aside class="notes">
+          <p>Take time to explain the concept of "selecting." Why would we want to do this? What things would we want to think
+            about when trying to find elements? What are the ways we could find/differentiate elements on the page?</p>
+          <p>A good instructor resource for this content, especially if you are more familiar with jQuery, is
+            <a href="https://plainjs.com">plainjs.com</a>.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Selecting DOM Nodes</h2>
+        <pre><code data-trim>var image = document.getElementById('kittenPic');</pre>
+        </code>
+        <div class="fragment">
+          <pre><code data-trim>document.getElementsByClassName('illustration');</pre>
+          </code>
+        </div>
+        <div class="fragment">
+          <pre><code data-trim>document.getElementsByTagName('img');</pre>
+          </code>
+        </div>
+        <aside class="notes">
+          <p>Walk through the syntax of the different ways to select DOM elements, tying back to some of the things students
+            may have said. (This slide has fragmented content that is revealed as you tab through it.)</p>
+          <p>Make note of the difference between "getElement" and "getElements" -- this is a common gotcha for new students.
+            To select a single node when an array (technically an `HTMLCollection`) is returned, remind students about bracket
+            notation.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>getElement vs. getElements</h2>
+        <pre><code data-trim>
+          document.getElementById('uniqueID');
+            // returns only one node
+        </code></pre>
+        <pre><code data-trim>
+          document.getElementsByClassName('product-description');
+            // returns an array-like collection of nodes
+          document.getElementsByClassName('product-description')[0];
+            // ah ha! now you have only one node!
+        </code></pre>
+        <aside class="notes">
+          <p>Talk through these examples. Ask students to explain what the bracket notation example will return. This is also
+            a good time to remind students about the usage difference between IDs and class.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>CODE BREAK</h2>
+        <p>Add an image element to your page if you don't already have one. Load the page in the browser and open the Console.</p>
+        <p>In the console,
+          <span class="brand-salmon bold">find the DOM node containing that element</span>. Store it in a variable.</p>
+        <p>
+          <span class="brand-salmon bold">Practice selecting other elements</span> and inspecting them in the console. What does it look like when you have
+          more than one element?</p>
+      </section>
+      <section>
+        <h2>querySelector and querySelectorAll</h2>
+        <p>Another way to select elements in the DOM uses CSS selectors.</p>
+        <pre><code data-trim>
+          // This will return the first element matching the provided selector
+          document.querySelector(".profile-photo");
 
-            &lt;script&gt;
-              function confirmCancel(){
-                alert('Are you sure you want to cancel?');
-              }
-            &lt;/script&gt;
-          </code></pre>
-        </section>
-        <section>
-          <h2>Event Listeners</h2>
-          <p>You can do the same thing purely in Javascript using event listeners.</p>
-          <pre><code data-trim>
-            var button = document.getElementById('cancelButton');
-            button.addEventListener('click', function(){
-              alert('Are you sure you want to cancel?');
-            })
-          </code></pre>
-        </section>
-        <section>
-          <h2>CODE BREAK</h2>
-          <p>Add a mouseclick event handler to some element on your page. </p>
-          <p>When the event occurs, log a message to the console.</p>
-          <p>The event should trigger some change in the browser, like adding a style or content or raising an alert box.</p>
-          <p>You might experiment with these events as well:</p>
+          // This returns a collection of elements matching the selector
+          document.querySelectorAll(".profile-photo");
+        </code></pre>
+        <aside class="notes">
+          <p>Demo these examples in the console, perhaps showing how you might handle the list of nodes returned by the `querySelectorAll`
+            method.
+          </p>
+          <p>Note that the argument to this method is the _entire_ selector, just like it is used in CSS (you could also use
+            #, tag names, and more complex selectors, but the students won't have seen those at this point).</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Changing Things in the DOM</h2>
+        <p>Once we can select DOM elements, we can make changes to them.</p>
+        <p>We can use JavaScript for...</p>
+        <ul>
+          <li>Adding or removing element attributes</li>
+          <li>Adding or removing classes</li>
+          <li>Adding or removing entire elements and/or their content</li>
+        </ul>
+        <p>Let's look at how to do this!</p>
+        <aside class="notes">
+          <p>Ask students to think about why we might want to do this. This is a building block for creating more complex behaviors.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Updating Element Attributes in the DOM</h2>
+        <p></p>
+        <pre><code data-trim>
+          var mainImg = document.getElementById('main-image');
+          mainImg.src
+            // what will this return?
+          mainImg.src = 'https://source.unsplash.com/200x300/?ocean';
+            // sets the src attribute to this value
+          mainImg.style.border = '4px solid purple';
+            // sets the style attribute and border property to this value
+        </code></pre>
+      </section>
+      <section>
+        <h2>Changing Classes in the DOM</h2>
+        <p>Making changes to classes lets us apply styles to, or remove styles from, elements in the DOM.</p>
+        <pre><code data-trim>
+          el = document.querySelector('.input--name');
+          elementClasses = el.classList
+          elementClasses.add('.highlight');
+        </code></pre>
+        <aside class="notes">
+          <p>Demo and walk through this code.</p>
+          <p>You could choose to illustrate the difference between element.className (which gets/sets) and element.classList
+            (which returns a DOMTokenList and has methods you can call to add/remove/toggle classes).</p>
+          <p>MDN documentation:</p>
           <ul>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/mouseover">mouseover</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/keypress">keypress</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/scroll"> scroll</a></li>
+            <l1>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList">Element.classList</a>
+            </l1>
+            <l1>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/className">Element.className</a>
+            </l1>
           </ul>
-        </section>
-        <section>
-          <h2>What's next?</h2>
-          <p>Learn more about web development using the awesome open source materials provided by Mozilla Developers' Network.</p>
-          <p>Check out their <a href="https://developer.mozilla.org/en-US/docs/Learn">Learn Web Development</a> content.</p>
-        </section>
-      </div>
-      <footer class="footer">
-        <img src="images/logo-main.png" alt="momentum-logo">
-      </footer>
-    </div>
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+        </aside>
+      </section>
+      <section>
+        <h2>CODE BREAK</h2>
+        <p>Let's try this out!</p>
+        <p>Make sure you have an image element on your page, like the following example.</p>
+        <pre><code data-trim>
+          &lt;img id=&quot;oceanPic&quot; class=&quot;illustration&quot; src=&quot;https://source.unsplash.com/200x300/?ocean&quot; alt=&quot;the sea&quot;/&gt;
+        </code></pre>
+        <p>Open the console, and first select that DOM node. </p>
+        <p>Change the
+          <span class="code-snippet">src</span> attribute so that a different image will be displayed.</p>
+        <p>Add or change the style attribute, using whatever properties you'd like.</p>
+        <p>Experiment with selecting and changing other DOM nodes in your page!</p>
+        <aside class="notes">
+          <p>If there will be time to do this: let people know that at the end of the code break, you'll ask everyone to show
+            something they played with, discovered, or had trouble with.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Changing content in the DOM</h2>
+        <p>The
+          <span class="code-snippet">innerHTML</span> property gives us access to the content of elements in the DOM and their children, if any.</p>
+        <pre><code data-trim>
+          element = document.getElementById('product-title');
+          element.innerHTML = '&lt;h2&gt;Boomerang&lt;h2&gt;';
+        </code></pre>
+        <aside class="notes">
+          <p>Some confusing concepts for newbies here: using both methods and properties, and the fact that some of those can
+            do both getting/setting.</p>
+          <p> Demo these things in the console, take it slowly, and don't worry too much about that distinction during this class.
+            It's more important that they get some practice using them and seeing the results.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Adding things to the DOM</h2>
+        <pre><code data-trim>
+          var existingElement = document.getElementById('div-awaiting-content')
+            // First select where you want to place the new content
+          var newElement = document.createElement('div');
+            // Create the new element
+          existingElement.appendChild(newElement);
+            // Add that element to the DOM
+        </code></pre>
+        <aside class="notes">
+          <p>MDN documentation:</p>
+          <ul>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById">Document.getElementById</a>
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement">Document.createElement</a>
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">Node.appendChild</a>
+            </li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Removing things from the DOM</h2>
+        <p>This is a little more complicated: first select the element to remove, then select its parent element.</p>
+        <p>Then you can remove the parent's child element.</p>
+        <pre><code data-trim>
+          var elementToRemove = document.getElementsByTagName('li')[2];
+          // What will this do?
+          parentElement = elementToRemove.parentNode
+          // what will this do?
+          parentElement.removeChild(elementToRemove);
+          // what is happening here?
+        </code></pre>
+        <aside class="notes">You could mention jQuery and/or React here as other ways to manipulate the DOM. </aside>
+      </section>
+      <section>
+        <h2>CODE BREAK</h2>
+        <p>Using Javascript only, create a new
+          <span class="code-snippet">p</span> element and add it to a
+          <span class="code-snippet">div</span> on your page. Set the content of the paragraph to a friendly message, then change the message to something
+          different.
+        </p>
+        <h4>Extra Challenge!</h4>
+        <p>Go to
+          <a href="www.reuters.com">reuters.com</a> or another news site. Using JavaScript only, find and change a headline to something you like better!</p>
+      </section>
+      <section>
+        <h2>JavaScript Events</h2>
+        <p>User interactions create events on the page. JavaScript can handle these events: detect when something happens and
+          do something in response, including changing the DOM or triggering other events. </p>
+        <aside class="notes">
+          <p>Ask students to brainstorm what some events might be and some interactions they are familiar with on webpages.</p>
+          <p>Explain that the event interface is like other JS objects, with properties and methods that we can interact with.</p>
+          <p>MDN Documentation:</p>
+          <ul>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Event Reference</a>
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">Web Events</a>
+            </li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <h2>Some Types of Events</h2>
+        <ul class="no-bullet">
+          <li>
+            <i class="fas fa-spinner fa-fw bold brand-salmon"></i> when the page loads</li>
+          <li>
+            <i class="fas fa-mouse-pointer fa-fw bold brand-salmon"></i> a mouse click or movement</li>
+          <li>
+            <i class="fas fa-hand-point-up fa-fw bold brand-salmon"></i> a tap on a touchscreen</li>
+          <li>
+            <i class="fas fa-keyboard fa-fw bold brand-salmon"></i> when a key is pressed</li>
+          <li>
+            <i class="fas fa-check-square fa-fw bold brand-salmon"></i> when something is selected</li>
+        </ul>
+      </section>
+      <aside class="notes">An event fires and triggers some JavaScript code to run. The code has been written to "listen" for when a certain event
+        occurs; when that event occurs, the code will run.</aside>
+      <section>
+        <h2>Event Handling</h2>
+        <p>Let's say you want a certain function to run when an image on the page is clicked.</p>
+        <ul>
+          <li>Select the DOM node for the element that will be clicked (the image).</li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Choose the event</a> that will act as the trigger for the function (the mouse click).</li>
+          <li>Specify the function that you wish to run when the event occurs.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Call the function inside the HTML</h2>
+        <pre><code data-trim>
+          &lt;button id="cancelButton" onclick="confirmCancel()"&gt;
+            Cancel order
+          &lt;/button&gt;
 
-    <script>
-      // More info about config & dependencies:
-      // - https://github.com/hakimel/reveal.js#configuration
-      // - https://github.com/hakimel/reveal.js#dependencies
-      Reveal.initialize({
-        dependencies: [
-          { src: 'plugin/markdown/marked.js' },
-          { src: 'plugin/markdown/markdown.js' },
-          { src: 'plugin/notes/notes.js', async: true },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-        ]
-      });
-    </script>
-  </body>
+          &lt;script&gt;
+            function confirmCancel(){
+              alert('Are you sure you want to cancel?');
+            }
+          &lt;/script&gt;
+        </code></pre>
+      </section>
+      <section>
+        <h2>Event Listeners</h2>
+        <p>You can do the same thing purely in Javascript using event listeners.</p>
+        <pre><code data-trim>
+          var button = document.getElementById('cancelButton');
+          button.addEventListener('click', function(){
+            alert('Are you sure you want to cancel?');
+          })
+        </code></pre>
+      </section>
+      <section>
+        <h2>CODE BREAK</h2>
+        <p>Add a mouseclick event handler to some element on your page. </p>
+        <p>When the event occurs, log a message to the console.</p>
+        <p>The event should trigger some change in the browser, like adding a style or content or raising an alert box.</p>
+        <p>You might experiment with these events as well:</p>
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Events/mouseover">mouseover</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Events/keypress">keypress</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Events/scroll"> scroll</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>HOMEWORK 1</h2>
+        <ol>
+          <li>Go back to the in-class coding exercises you did to make changes to the DOM. Add event handlers so that those changes
+            are made in response to an event.</li>
+          <li>Add a JavaScript event to the page you built for homework on day one or two.</li>
+          <li>Use the
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Events">MDN event reference</a> to see other browser events you could try.</li>
+        </ol>
+      </section>
+      <section>
+        <h2>HOMEWORK 2</h2>
+        <p>Go back to the
+          <a href="https://glitch.com/edit/#!/momentum-f2c?path=script.js:7:0">Glitch program</a> from yesterday and read that code again now that you have some knowledge about the DOM.</p>
+        <p>Building on what you know from this code, try adding a button (or just a div styled to look like a button...) to
+          your page that lets your user click it to change the background color of the page when it's clicked. </p>
+        <p>What about changing other styles?</p>
+        <p>
+          <span class="brand-salmon bold">EXTRA CHALLENGE:</span> Create a drop down menu with theme options that changes different styles on the page to
+          create a different look.</p>
+      </section>
+    </div>
+    <footer class="footer">
+      <img src="images/logo-main.png" alt="momentum-logo">
+    </footer>
+  </div>
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+      ],
+      history: true
+    });
+  </script>
+</body>
+
 </html>
