@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/theme/momentum.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/atom-one-dark.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -33,78 +33,100 @@
         </section>
         <section>
           <h2>Today we'll learn about...</h2>
-            <ul>
-              <li>What JavaScript is and why we need it</li>
-              <li>some basics of programming</li>
-              <li>variables, expressions, and logical flow</li>
-              <li>data types in JavaScript</li>
-            </ul>
-              <p>...and we'll write our first JavaScript and see it at work in the browser</p>
+          <ul>
+            <li>What JavaScript is and why we need it</li>
+            <li>some basics of programming</li>
+            <li>variables, expressions, and logical flow</li>
+            <li>data types in JavaScript</li>
+          </ul>
+          <p>...and we'll write our first JavaScript and see it at work in the browser</p>
         </section>
         <section data-background-image="images/fe-components.jpg">
           <aside class="notes">
-          <p>Talk about JS's role in the front end, alongside HTML and CSS.</p>
-          <p>JS lets you make web pages interactive and dynamic.</p>
+            <p>Talk about JS's role in the front end, alongside HTML and CSS.</p>
+            <p>JS lets you make web pages interactive and dynamic.</p>
           </aside>
         </section>
         <section>
-          <h2>What can you do with JS?</h2>
+          <h2>What can you do with JavaScript?</h2>
+          <p>Access and modify content on the web page</p>
           <ul>
-            <li>Access and modify content on the web page</li>
-              <ul>
-                <li>Select all the elements with a certain class</li>
-                <li>Check a value that was entered into a form input</li>
-                <li>Change the size of an image</li>
-                <li>Add new content to the page without reloading the page</li>
-              </ul>
-            <li>Tell the browser to do something, and when to do it</li>
-              <ul>
-                <li>React to user input, like a mouse click or a tap on an element</li>
-                <li>Show a slideshow</li>
-                <li>Track how much time has passed while a user is on a page</li>
-                <li>Wait until something happens before content is shown on the page</li>
-                <li>Show or hide content on a page if a certain condition is met</li>
-              </ul>
+            <li>
+              <span class="brand-salmon">Select elements</span> with a certain class</li>
+            <li>
+              <span class="brand-salmon">Check a value</span> that was entered into a form input</li>
+            <li>
+              <span class="brand-salmon">Change styles or attributes</span> of an html element</li>
+            <li>
+              <span class="brand-salmon">Add new content</span> to the page without reloading the page</li>
           </ul>
-          <aside class="notes">
-            <h6>How does JS run in the browser?</h6>
-            <ul>
-              <li>You visit a website with JavaScript code on it.</li>
-              <li>Your browser (e.g., Chrome) reads the code line-by-line.</li>
-              <li>The browser runs each line of code as it reads it.</li>
-              <li>Based on these instructions, the browser may perform calculations or searches and does something on the page.</li>
-              <li>If the browser finds code it doesn't understand, it stops running and throws an error.</li>
-            </ul>
-          </aside>
         </section>
         <section>
-            <h2>JavaScript in the Wild</h2>
-            <ul>
-              <li><a href="https://www.npr.org/music">NPR Music</a></li>
-              <li><a href="http://www.histography.io/">histography.io</a></li>
-              <li><a href="http://leimi.github.io/drawingboard.js/">drawingboard.js</a></li>
-              <li><a href="https://codepen.io/sureshrkm/pen/ZbzBpr">Accordion menu</a></li>
-            </ul>
-            <aside class="notes">
-              <p>Show the JavaScript console in Chrome and that you can write/run JS there. Make sure students can open and find the console. You can show sources with some of the JS on the sites listed on the slide, but that might be overwhelming.</p>
-            </aside>
+          <h2>More you can do with JavaScript!</h2>
+          <p>Tell the browser to do something, and when to do it</p>
+          <ul>
+            <li>
+              <span class="brand-salmon">React to user input</span>, like a mouse click or a tap on an element</li>
+            <li>Show a
+              <span class="brand-salmon">slideshow</span>
+            </li>
+            <li>Track
+              <span class="brand-salmon">how much time has passed</span> while a user is on a page</li>
+            <li>Wait until something happens (
+              <span class="brand-salmon">an event</span>) before content is shown on the page</li>
+            <li>
+              <span class="brand-salmon">Show or hide content</span> on a page if a certain condition is met</li>
+          </ul>
+        </section>
+        <section>
+          <h2>JavaScript in the Wild</h2>
+          <ul>
+            <li>
+              <a href="http://www.histography.io/">histography.io</a>
+            </li>
+            <li>
+              <a href="http://leimi.github.io/drawingboard.js/">drawingboard.js</a>
+            </li>
+            <li>
+              <a href="https://codepen.io/sureshrkm/pen/ZbzBpr">Accordion menu</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>JavaScript runs in the browser</h2>
+          <ol>
+            <li>You visit a website with JavaScript code included on the page.</li>
+            <li>The browser reads the code line-by-line.</li>
+            <li>The browser runs each line of code as it reads it.</li>
+            <li>Based on these instructions, the browser may perform calculations or searches and does something on the page.</li>
+            <li>If the browser finds code it doesn't understand, it stops running and throws an error.</li>
+          </ol>
+          <aside class="notes">
+            <p>Show the JavaScript console in Chrome and that you can write/run JS there. Make sure students can open and find the
+              console. You can show sources with some of the JS on the sites listed on the slide, but that might be overwhelming.</p>
+          </aside>
         </section>
         <section>
           <h2>JavaScript is loaded with the page</h2>
           <pre><code data-trim>
-            &lt;script&gt;
-                console.log('Hello World!');
-            &lt;/script&gt;
-          </code></pre>
-          <aside class="notes">As with css, there are several ways to include JS with your HTML: inline, directly inside script tags, or linked to an external file with the script tag's <span class="monospace">src</span> attribute. Make sure to place it near the bottom of the content inside the body element.</aside>
+                  &lt;script&gt;
+                      console.log('Hello World!');
+                  &lt;/script&gt;
+                </code></pre>
+          <aside class="notes">As with css, there are several ways to include JS with your HTML: inline, directly inside script tags, or linked to an
+            external file with the script tag's
+            <span class="code-snippet">src</span> attribute. Make sure to place it near the bottom of the content inside the body element.</aside>
         </section>
         <section>
           <h2>Including JavaScript in your page</h2>
           <pre><code>
-            <script src="main.js"></script>
-          </code></pre>
+                  <script src="main.js"></script>
+                </code></pre>
           <aside class="notes">
-            <p>Demo creating, linking, and loading a JS file to the HTML page from previous classes, and in here introduce <span class="monospace">console.log</span>, <span class="monospace">window.alert</span>, and/or <span class="monospace">document.write</span>. Show page source before and after JS script is loaded.</p>
+            <p>Demo creating, linking, and loading a JS file to the HTML page from previous classes, and in here introduce console.log
+              and window.alert. You can show the source files in the live preview from Glitch.</p>
+            <p>If you think it would go well in class, you could also show this by creating files in a text editor and then loading
+              them in the browser. If you do this, you can show page source before and after JS script is loaded.</p>
           </aside>
         </section>
         <section>
@@ -120,164 +142,184 @@
             <p>This is a whole class exercise; spend about 5 minutes on it.</p>
             <p>Computers are dumb! They are great at processing/following instructions, but they are not great at understanding.</p>
             <p>To write a program, you need to break down every step into simple pieces</p>
-            <p>Exercise: Give me instructions to draw a square on the whiteboard. [Follow student directions literally and exactly to demonstrate how a computer might interpret the instructions and the omissions of steps.]</p>
+            <p>Exercise: Give me instructions to draw a square on the whiteboard. [Follow student directions literally and exactly
+              to demonstrate how a computer might interpret the instructions and the omissions of steps.]</p>
           </aside>
         </section>
         <section>
           <h2>Variables</h2>
           <img src="images/cat-boxes-imgur.jpg" id="cat-boxes-imgur">
-          <label for="cat-boxes-imgur" class="short-image-attribution" style="float:none;">courtesy of <a href="imgur.com/YJDNSHu">Imgur</a></label>
+          <label for="cat-boxes-imgur" class="short-image-attribution" style="float:none;">courtesy of
+            <a href="imgur.com/YJDNSHu">Imgur</a>
+          </label>
           <aside class="notes">
-            <p>We can think of variables as boxes or containers that hold some kind of data and make that data available for reuse later. We can put data in that container, or change it, and use the value it contains wherever we need it.</p>
+            <p>We can think of variables as boxes or containers that hold some kind of data and make that data available for reuse
+              later. We can put data in that container, or change it, and use the value it contains wherever we need it.</p>
           </aside>
         </section>
         <section data-background-image="images/js-variables.jpg">
           <aside class="notes">
-            <p>We will cover data types in more detail in a few minutes, but two of the types we'll look at first are numbers and strings.</p>
+            <p>We will cover data types in more detail in a few minutes, but two of the types we'll look at first are numbers and
+              strings.</p>
             <p>A string is a combination of letters, numbers, and special characters, surrounded by matching quote marks.</p>
-            <p>In the Chrome inspector, demo declaring variables and assigning numbers and string as values, showing how you can then use the variable in an expression.</p>
+            <p>In the Chrome inspector, demo declaring variables and assigning numbers and string as values, showing how you can then
+              use the variable in an expression.</p>
           </aside>
-        </section>
-        <section>
-          <h2>CODE BREAK</h2>
-          <p>Store some data in variables and output the values to the console or the browser window.</p>
         </section>
         <section>
           <h2>Data Types in JavaScript</h2>
           <div>
             <ul class="slide-width">
-              <li><span class="monospace">String</span>
+              <li>
+                <span class="bold brand-salmon">String</span>
                 <pre><code>var userName = 'Hodor';</code></pre>
               </li>
-              <li><span class="monospace">Number</span>
+              <li>
+                <span class="bold brand-salmon">Number</span>
                 <pre><code>var numKingdoms = 7;</code></pre>
               </li>
-              <li><span class="monospace">Boolean</span>
+              <li>
+                <span class="bold brand-salmon">Boolean</span>
                 <pre><code>var winterIsComing = true;</code></pre>
               </li>
-              <li><span class="monospace">undefined</span>
+              <li>
+                <span class="bold brand-salmon">undefined</span>
                 <pre><code>var dragons;</code></pre>
               </li>
-              <li><span class="monospace">null</span>
+              <li>
+                <span class="bold brand-salmon">null</span>
                 <pre><code>var thronesWon = null;</code></pre>
               </li>
             </ul>
           </div>
-        <aside class="notes">
-          <ul>
-            <li>String; string of characters</li>
-            <li>Number: integer or floating point</li>
-            <li>Boolean: true or false</li>
-            <li>value that hasn't been defined</li>
-            <li>an explicitly empty value</li>
-          </ul>
-        </aside>
+          <aside class="notes">
+            <p>Take a few minutes here to go through each and explain it.</p>
+            <ul>
+              <li>String; string of characters</li>
+              <li>Number: integer or floating point</li>
+              <li>Boolean: true or false</li>
+              <li>Undefined: a value that hasn't been defined</li>
+              <li>Null: an explicitly empty value</li>
+            </ul>
+          </aside>
         </section>
         <section>
-            <h2>String concatenation</h2>
-            <p>Combine strings with the <span class="monospace">+</span> operator:
-              <pre><code data-trim>
-                "This string can be combined " + "with this string."
-                var partOfAString = "Fun with "
-                partOfAString + "strings!"
-              </code></pre>
+          <h2>String concatenation</h2>
+          <p>Combine strings with the
+            <span class="code-snippet">+</span> operator:
+            <pre><code data-trim>
+              "This string can be combined " + "with this string."
+              var partOfAString = "Fun with "
+              partOfAString + "strings!"
+            </code></pre>
         </section>
         <section>
           <h2>Template literals</h2>
           <p>An even fancier way to combine strings:</p>
           <pre><code data-trim>
-            var favoriteThing = "avocado"
-            `My favorite thing is ${ favoriteThing }`
-          </code></pre>
+                  var favoriteThing = "avocado"
+                  `My favorite thing is ${ favoriteThing }`
+                </code></pre>
         </section>
         <section>
           <h2>CODE BREAK</h2>
           <p>Try out working with strings and variables in your JavaScript console!</p>
-          <p>In your JS file, see if you can write a Mad-Lib style sentence using variables to fill in the blanks. For instance, this could be one about Animal Fun Facts:</p>
-          <p>"________ have a reputation as ___________ animals. Research shows that they are _________. A pack of _________ can be as large as _________. They eat _________ and _________. They commonly live in ____________. "</p>
+          <p>In your JS file, see if you can write a Mad-Lib style sentence using variables and template literals to fill in the blanks.
+            For instance, this could be one about Animal Fun Facts:</p>
+          <p>"________ have a reputation as ___________ animals. Research shows that they are _________. A pack of _________ can be
+            as large as _________. They eat _________ and _________. They commonly live in ____________."</p>
+          <p class="brand-salmon">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN documentation for template literals</a>
+          </p>
         </section>
         <section>
           <h2>Conditionals</h2>
-          <p><span class="monospace">if/else</span> statements let you add logical "flow" to your code.</p>
+          <p><span class="code-snippet">if/else</span> statements let you add logical "flow" to your code.</p>
           <p>Lines of code inside the brackets are run or not run based on a condition.</p>
-            <pre><code data-trim>
-              if (condition) {
-                // this code will be run
-              }
-            </code></pre>
-            <pre><code data-trim>
-              var pets = 5;
-              if (pets &gt; 0) {
-                console.log ('You have some pets!');
-              }
-            </code></pre>
+          <pre><code data-trim>
+            if (condition) {
+              // this code will be run
+            }
+          </code></pre>
+          <pre><code data-trim>
+            var pets = 5;
+            if (pets &gt; 0) {
+              console.log ('You have some pets!');
+            }
+          </code></pre>
           <aside class="notes">
-            <p>Take some time to explain control flow using a traditional flow chart on the whiteboard. The concept of "if this, then that" should be familiar, so make that analogy.</p>
-            <p>Review the concept of an expression in JS: the condition inside the parens is evaluated to a Boolean. You can show this in the console. This will also be an introduction to comparison operators in JS.</p>
+            <p>Take some time to explain control flow using a traditional flow chart on the whiteboard. The concept of "if this, then
+              that" should be familiar, so make that analogy.</p>
+            <p>Review the concept of an expression in JS: the condition inside the parens is evaluated to a Boolean. You can show
+              this in the console. This will also be an introduction to comparison operators in JS.</p>
           </aside>
         </section>
         <section>
           <h2>Comparison Operators</h2>
-            <ul>
-              <li>
-                <span class="bold">Equality</span> true if a is equal to b
-                <pre><code>a == b</code></pre>
-              </li>
-              <li>
-                <span class="bold">Identity (Strict Equality)</span>: true if a is equal to be and of the same data type
-                <pre><code>a === b</code></pre>
-              </li>
-              <li>
-                <span class="bold">Inequality</span>: true if a is NOT equal to b, or they are not the same type
-                <pre><code>a != b</code></pre>
-              </li>
-            </ul>
-            <pre><code>
-              12 == 12      // true
-              "12" === 12   // false
-              12 != 12      // false
-            </code></pre>
-            <aside class="notes">
-              <p>Demo some of these examples in the console.</p>
-              <p>Remind students to watch out for mixing up assignment and equality comparison!</p>
-            </aside>
+          <ul>
+            <li>
+              <span class="bold brand-salmon">Equality</span> true if a is equal to b
+              <pre><code>a == b</code></pre>
+            </li>
+            <li>
+              <span class="bold brand-salmon">Identity (Strict Equality)</span>: true if a is equal to be and of the same data type
+              <pre><code>a === b</code></pre>
+            </li>
+            <li>
+              <span class="bold brand-salmon">Inequality</span>: true if a is NOT equal to b, or they are not the same type
+              <pre><code>a != b</code></pre>
+            </li>
+          </ul>
+          <pre><code data-trim>
+            12 == 12      // true
+            "12" === 12   // false
+            12 != 12      // false
+          </code></pre>
+          <aside class="notes">
+            <p>Demo some of these examples in the console.</p>
+            <p>Remind students to watch out for mixing up assignment and equality comparison!</p>
+          </aside>
         </section>
         <section>
           <h2>More Comparison Operators</h2>
-            <ul>
-              <li>
-                <span class="bold">Greater Than</span>: true if a is greater than b
-                <pre><code>a &gt; b</code></pre>
-              </li>
-              <li>
-                <span class="bold">Less Than</span>: true if a is less than b
-                <pre><code>a &lt; b</code></pre>
-              </li>
-              <li>
-                <span class="bold">Greater Than or Equal To</span>: true if a is greater than or equal to b
-                <pre><code>a &gt;= b</code></pre>
-              </li>
-              <li>
-                <span class="bold">Less Than or Equal To</span>: true if a is less than or equal to b
-                <pre><code>a &lt;= b</code></pre>
-              </li>
-            </ul>
+          <ul>
+            <li>
+              <span class="bold brand-salmon">Greater Than</span>: true if a is greater than b
+              <pre><code>a &gt; b</code></pre>
+            </li>
+            <li>
+              <span class="bold brand-salmon">Less Than</span>: true if a is less than b
+              <pre><code>a &lt; b</code></pre>
+            </li>
+            <li>
+              <span class="bold brand-salmon">Greater Than or Equal To</span>: true if a is greater than or equal to b
+              <pre><code>a &gt;= b</code></pre>
+            </li>
+            <li>
+              <span class="bold brand-salmon">Less Than or Equal To</span>: true if a is less than or equal to b
+              <pre><code>a &lt;= b</code></pre>
+            </li>
+          </ul>
         </section>
         <section>
           <h2>CODE BREAK</h2>
-          <p>Make a variable called “temperature”. Write some code to tell you to put on a coat if it is below 55 degrees. Log your output to the console.</p>
+          <p>Make a variable called “temperature”. Write some code to tell you to put on a coat if it is below 55 degrees. Log your
+            output to the console.</p>
         </section>
         <section>
           <h3>If/Else</h3>
-          <p>Add more branches to your logic with <span class="monospace">else</span> and <span class="monospace">else if</span></p>
-          <pre><code>
+          <p>Add more branches to your logic with
+            <span class="code-snippet">else</span> and
+            <span class="code-snippet">else if</span>
+          </p>
+          <pre><code data-trim>
             if (condition) {
               // do this thing
             } else {
               // do this other thing
             }
           </code></pre>
-          <pre><code>
+          <pre><code data-trim>
             if (condition) {
               // do this thing
             } else if (differentCondition) {
@@ -286,48 +328,63 @@
               // do some other thing
             }
           </code></pre>
-          <aside class="notes">Demo in the console and explain that only one of the branches will be run. Explain that<span class="monospace">else</span> branches are optional, and it is possible to make it so that nothing runs.</aside>
+          <aside class="notes">Demo in the console and explain that only one of the branches will be run. Explain that `else` branches are optional,
+            and it is possible to make it so that nothing runs.</aside>
         </section>
         <section>
           <h3>Logical operators</h3>
-            <ul>
-              <li>
-                <span class="bold">And</span>: both a and b
-                <pre><code>a &amp;&amp; b</code></pre>
-              </li>
-              <li>
-                <span class="bold">Or</span>: a or b
-                <pre><code>a || b</code></pre>
-              </li>
-              <li>
-                <span class="bold">Not</span>: not a
-                <pre><code>!a</code></pre>
-              </li>
-            </ul>
+          <ul>
+            <li>
+              <span class="bold brand-salmon">And</span>: both a and b
+              <pre><code>a &amp;&amp; b</code></pre>
+            </li>
+            <li>
+              <span class="bold brand-salmon">Or</span>: a or b
+              <pre><code>a || b</code></pre>
+            </li>
+            <li>
+              <span class="bold brand-salmon">Not</span>: not a
+              <pre><code>!a</code></pre>
+            </li>
+          </ul>
         </section>
         <section>
           <h3>How to Use Logical Operators</h3>
-            <p>These operators let you combine conditions.</p>
-            <pre><code data-trim>
-              var age = 19;
-              var usCitizenship = true;
+          <p>These operators let you combine conditions.</p>
+          <pre><code data-trim>
+            var age = 19;
+            var usCitizenship = true;
             if (age &gt;= 18 &amp;&amp; usCitizenship) {
-              console.log ('You are eligible to vote!');
+              console.log("You are eligible to vote!");
             } else {
-              console.log ('You can't vote yet!);
+              console.log("You can't vote yet!");
             }
-            </code></pre>
+          </code></pre>
         </section>
         <section>
-          <h2>HOMEWORK</h2>
-            <p>Modify your “wear a coat” code for these conditions:</p>
-            <ul>
-              <li>If it's less than 55 degrees, wear a coat.</li>
-              <li>If it's less than 40 degrees, wear a coat and a hat.</li>
-              <li>If it's less than 0 degrees, stay inside.</li>
-              <li>Otherwise, wear whatever you want.</li>
-            </ul>
-            <p>BONUS: Add code to wear a waterproof coat and/or boots if it is raining or snowing! How would you code this complexity?</p>
+          <h2>HOMEWORK 1</h2>
+          <p>Modify your “wear a coat” code for these conditions:</p>
+          <ul>
+            <li>If it's less than 55 degrees, wear a coat.</li>
+            <li>If it's less than 40 degrees, wear a coat and a hat.</li>
+            <li>If it's less than 0 degrees, stay inside.</li>
+            <li>Otherwise, wear whatever you want.</li>
+          </ul>
+          <p>
+            <span class="bold brand-salmon">BONUS:</span> Add code to wear a waterproof coat and/or boots if it is raining or snowing! How would you code this
+            complexity?</p>
+          <p>But wait, there's more!
+            <i class="fas fa-angle-double-right brand-salmon"></i>
+          </p>
+        </section>
+        <section>
+          <h2>HOMEWORK 2</h2>
+          <h4>😸
+            <a href="http://jsforcats.com/">JavaScript for Cats!</a> 😸</h4>
+          <p>Get as far as you can with this
+            <a href="http://jsforcats.com/">feline-infused introductory overview of JavaScript concepts</a>.</p>
+          <p>Some of it will review what we've done today and some of it will be new material. We'll be doing more with JavaScript
+            during the next few classes!</p>
         </section>
       </div>
       <footer class="footer">
@@ -347,7 +404,8 @@
           { src: 'plugin/markdown/markdown.js' },
           { src: 'plugin/notes/notes.js', async: true },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-        ]
+        ],
+        history: true
       });
     </script>
   </body>
